@@ -1,0 +1,24 @@
+{% extends 'admin/base.html' %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="../../../">{% trans "Home" %}</a> &rsaquo;
+    <a href="../../">{{ opts.app_config.verbose_name|capfirst|escape }}</a> &rsaquo;
+    <a href="../">{{ opts.verbose_name_plural|capfirst }}</a> &rsaquo;
+    {{ original|truncatewords:"18" }} &rsaquo;
+    {% trans "Upload CSV" %}
+</div>
+{% endif %}{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="button" type="submit">Upload CSV</button>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+</script>
+{% endblock %}

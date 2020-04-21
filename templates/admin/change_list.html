@@ -1,0 +1,22 @@
+{% extends 'admin/change_list.html' %}
+
+{% block object-tools %}
+<ul class="object-tools">
+    {% block object-tools-items %}
+    {{ block.super }}
+    {% endblock %}
+    {% if allow_csv_upload%}
+    <li>
+
+        <a href="{% url 'handle_csv_upload' app_label=cl.opts.app_label model_name=cl.opts.model_name %}"
+           style="margin-right:8px;">
+            Import {{ cl.opts.verbose_name_plural|capfirst }}
+        </a>
+<!--        <a href="/media/file-samples/students_detail.csv">-->
+<!--            Download file sample-->
+<!--        </a>-->
+    </li>
+    {% endif %}
+
+</ul>
+{% endblock %}
